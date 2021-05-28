@@ -24,16 +24,16 @@ public abstract class BaseEntity {
         browser.navigate(propReader.getProperty("url"));
     }
 
-    protected abstract String formatLogMsg(String message);
-
-    protected void info(final String message) {
-        logger.info(formatLogMsg(message));
-    }
-
     @AfterClass
     public static void after() {
 
         browser.exit();
 
+    }
+
+    protected abstract String formatLogMsg(String message);
+
+    protected void info(final String message) {
+        logger.info(formatLogMsg(message));
     }
 }

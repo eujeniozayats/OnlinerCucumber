@@ -15,7 +15,7 @@ public class CatalogPage extends BasePage {
         super(By.xpath("//div[@class='b-top-logo']"), "Catalog Page");
     }
 
-    public void navigateMenu(String category, String subCategory){
+    public void navigateMenu(String category, String subCategory) {
         Button btnCategory = new Button(By.xpath(String.format(categoryLocator, category)), "Category Button");
         btnCategory.clickAndWait();
         Button btnSubCategory = new Button(By.xpath(String.format(subCategoryLocator, subCategory)), "Sub category Button");

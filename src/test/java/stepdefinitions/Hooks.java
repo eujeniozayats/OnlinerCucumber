@@ -4,17 +4,17 @@ import framework.BaseEntity;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
-public class Hooks extends BaseEntity{
+public class Hooks extends BaseEntity {
 
     @Before
-    public void setUp(){
+    public void setUp() {
 
         before();
 
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
 
         after();
 
