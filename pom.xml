@@ -25,6 +25,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
+                    <systemPropertyVariables>
+                        <browser>${Dbrowser}</browser>
+                    </systemPropertyVariables>
+
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>

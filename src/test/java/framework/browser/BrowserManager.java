@@ -35,7 +35,7 @@ public final class BrowserManager extends BaseEntity {
     private static void initBrowserProperties() {
 
         propReader = new PropReader(propFile);
-        currentBrowser = BrowserTypes.valueOf(propReader.getProperty("browser"));
+        currentBrowser = BrowserTypes.valueOf(System.getProperty("browser"));
 
     }
 
