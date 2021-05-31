@@ -27,11 +27,6 @@ public abstract class BaseElement extends BaseEntity {
         elementName = name;
     }
 
-    public void listOfLabels(String locator) {
-        browser.getDriver().findElements(By.xpath(locator));
-    }
-
-
     public void waitTillElementNotStale() {
         (new WebDriverWait(browser.getDriver(), Long.parseLong(propReader.getProperty("implicitlyWait")))).until(ExpectedConditions.presenceOfElementLocated(locator));
         WebElement element = (new WebDriverWait(browser.getDriver(), Long.parseLong(propReader.getProperty("implicitlyWait")))).until(ExpectedConditions.presenceOfElementLocated(locator));
