@@ -12,4 +12,5 @@ public class Button extends BaseElement {
         return getLocale("logger.button");
     }
 
+
 }

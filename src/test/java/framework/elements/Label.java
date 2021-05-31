@@ -2,6 +2,7 @@ package framework.elements;
 
 import org.openqa.selenium.By;
 
+
 public class Label extends BaseElement {
 
     public Label(final By locator, final String name) {
@@ -11,5 +12,6 @@ public class Label extends BaseElement {
     protected String getElementType() {
         return getLocale("logger.label");
     }
+
 
 }

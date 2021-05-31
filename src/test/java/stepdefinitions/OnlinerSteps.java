@@ -17,7 +17,6 @@ public class OnlinerSteps extends BaseEntity {
     @Given("^user is on main page and goes to menu section (.*)$")
     public void selectMenuSection(String manuCategory) {
 
-        logger.step(1);
         MainPage mainPage = new MainPage();
         mainPage.navigateSection(manuCategory);
 
@@ -26,7 +25,6 @@ public class OnlinerSteps extends BaseEntity {
     @When("^user selects category (.*) and subcategory (.*) and subcategory item (.*)$")
     public void selectCategorySubCategoryItem(String category, String subcategory, String item) {
 
-        logger.step(2);
         CatalogPage catalogPage = new CatalogPage();
         catalogPage.navigateMenu(category, subcategory);
         catalogPage.selectDropdownItem(item);
@@ -37,23 +35,22 @@ public class OnlinerSteps extends BaseEntity {
     @And("^sets min (.*) diagonal$")
     public void setMinDiagonal(String min) {
 
-        logger.step(3);
         FilterForm menu = new FilterForm();
-        menu.selectCheckbox(min);
+        menu.setFilter(min);
     }
 
     @And("^sets max (.*) diagonal$")
     public void setMaxDiagonal(String max) {
 
         FilterForm menu = new FilterForm();
-        menu.selectCheckbox(max);
+        menu.setFilter(max);
     }
 
     @And("^sets brand (.*)$")
     public void serBrand(String brand) {
 
         FilterForm menu = new FilterForm();
-        menu.selectCheckbox(brand);
+        menu.setFilter(brand);
     }
 
     @And("^sets price (.*)$")
@@ -68,16 +65,15 @@ public class OnlinerSteps extends BaseEntity {
     public void setResolution(String resolution) {
 
         FilterForm menu = new FilterForm();
-        menu.selectCheckbox(resolution);
+        menu.setFilter(resolution);
 
     }
 
     @Then("^search result matches desired brand (.*)$")
     public void valdiateBrand(String brand) {
 
-        logger.step(4);
         SearchResultsPage search = new SearchResultsPage();
-        search.validateSearchList(search.titleResultsList, brand);
+        search.validateTitles(brand);
 
     }
 
@@ -85,7 +81,7 @@ public class OnlinerSteps extends BaseEntity {
     public void validatePrice(String price) {
 
         SearchResultsPage search = new SearchResultsPage();
-        search.validateSearchPrices(search.descriptionResultsPrice, price);
+        search.validatePrices(price);
 
     }
 
@@ -93,7 +89,7 @@ public class OnlinerSteps extends BaseEntity {
     public void validateResolution(String resolution) {
 
         SearchResultsPage search = new SearchResultsPage();
-        search.validateSearchList(search.descriptionResultsList, resolution);
+        search.validateSearchDescriprions(resolution);
 
     }
 
@@ -101,7 +97,7 @@ public class OnlinerSteps extends BaseEntity {
     public void validateDiagonal(String min, String max) {
 
         SearchResultsPage search = new SearchResultsPage();
-        search.validateSearchInches(search.descriptionResultsList, min, max);
+        search.validateDimes(min, max);
 
     }
 

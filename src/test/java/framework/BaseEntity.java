@@ -12,8 +12,8 @@ public abstract class BaseEntity {
 
     static final String propFile = "selenium.properties";
     public static String resourceBundlePath = "logger/logger";
-    protected static ResourceBundle resourceBundle;
     public static PropReader propReader;
+    protected static ResourceBundle resourceBundle;
     protected static BrowserManager browser;
     protected static Logger logger = Logger.getInstance();
 
@@ -36,13 +36,13 @@ public abstract class BaseEntity {
 
     }
 
+    protected static String getLocale(final String key) {
+        return resourceBundle.getString(key);
+    }
+
     protected abstract String formatLogMsg(String message);
 
     protected void info(final String message) {
         logger.info(formatLogMsg(message));
-    }
-
-    protected static String getLocale(final String key) {
-        return resourceBundle.getString(key);
     }
 }

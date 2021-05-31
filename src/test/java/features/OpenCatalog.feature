@@ -14,9 +14,9 @@ Feature: To ensure search is working fine
     And sets price <price>
     And sets resolution <resolution>
     Then search result matches desired brand <brand>
-    And search result matches desired price <price>
-    And search result matches desired resolution <resolution>
-    And search result matches desired diagonal from <min> to <max>
+    * search result matches desired price <price>
+    * search result matches desired resolution <resolution>
+    * search result matches desired diagonal from <min> to <max>
 
     Examples:
       | section | category    | subcategory | item       | min | max | brand   | price | resolution          |

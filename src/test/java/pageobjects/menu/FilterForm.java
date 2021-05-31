@@ -20,7 +20,7 @@ public class FilterForm extends BasePage {
         txbPriceToField.sendKeys(price);
     }
 
-    public void selectCheckbox(String checkboxName) {
+    public void setFilter(String checkboxName) {
         Checkbox checkbox = new Checkbox(By.xpath(String.format(checkboxLocator, checkboxName)), checkboxName);
         checkbox.check();
         lblProductTitle.waitTillElementNotStale();

@@ -12,4 +12,5 @@ public class Checkbox extends BaseElement {
         return getLocale("logger.checkbox");
     }
 
+
 }

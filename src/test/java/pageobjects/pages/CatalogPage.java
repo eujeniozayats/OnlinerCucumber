@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 
 public class CatalogPage extends BasePage {
 
-    private final String categoryLocator = "//span[text()='%s']";
+    private final String categoryLocator = "//span[contains(text(), '%s')]";
     private final String subCategoryLocator = "//div[contains(text(), '%s')]";
     private final String itemLocator = "//span[contains(text(), '%s')]";
 

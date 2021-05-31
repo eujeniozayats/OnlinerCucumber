@@ -12,4 +12,5 @@ public class TextBox extends BaseElement {
         return getLocale("logger.textbox");
     }
 
+
 }
