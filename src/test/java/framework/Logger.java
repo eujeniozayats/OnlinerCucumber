@@ -20,10 +20,10 @@ public final class Logger {
         }
         return instance;
     }
+    public void step(final int step) {
+        logDelimiter(BaseEntity.getLocale("logger.step") + step);
+    }
 
-    /*public void step(final int step) {
-        logDelimiter(step);
-    }*/
 
     private void logDelimiter(final String msg) {
         if (logSteps) {

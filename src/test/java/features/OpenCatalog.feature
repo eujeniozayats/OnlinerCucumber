@@ -6,10 +6,8 @@ Feature: To ensure search is working fine
 
   Scenario Outline: Verify search results are correct
 
-    Given user is on main page
-    When user goes to menu section <section>
-    And selects category <category> and subcategory <subcategory>
-    And chooses item <item>
+    Given user is on main page and goes to menu section <section>
+    When user selects category <category> and subcategory <subcategory> and subcategory item <item>
     And sets min <min> diagonal
     And sets max <max> diagonal
     And sets brand <brand>

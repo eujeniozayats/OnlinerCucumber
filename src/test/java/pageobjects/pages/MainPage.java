@@ -12,7 +12,7 @@ public class MainPage extends BasePage {
     }
 
     public void navigateSection(String section) {
-        Button btnMenuItem = new Button(By.xpath(String.format(menuLocator, section)), "Menu Item Button");
+        Button btnMenuItem = new Button(By.xpath(String.format(menuLocator, section)), section);
         btnMenuItem.clickAndWait();
     }
 }

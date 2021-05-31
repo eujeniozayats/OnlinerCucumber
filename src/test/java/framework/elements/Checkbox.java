@@ -9,7 +9,7 @@ public class Checkbox extends BaseElement {
     }
 
     protected String getElementType() {
-        return "";
+        return getLocale("logger.checkbox");
     }
 
 }

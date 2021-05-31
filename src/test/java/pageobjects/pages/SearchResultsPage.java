@@ -15,7 +15,7 @@ public class SearchResultsPage extends BasePage {
     public List<WebElement> descriptionResultsPrice = browser.getDriver().findElements(By.xpath("//a[@class='schema-product__price-value schema-product__price-value_primary']"));
 
     public SearchResultsPage() {
-        super(By.xpath("//div[@class='b-top-logo']"), "Main Page");
+        super(By.xpath("//div[@class='b-top-logo']"), "Search Results Page");
     }
 
     public void validateSearchList(List<WebElement> listToValidate, String stringToValidate) {

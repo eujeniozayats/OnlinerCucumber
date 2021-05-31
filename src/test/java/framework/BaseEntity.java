@@ -4,17 +4,22 @@ import framework.browser.BrowserManager;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseEntity {
 
     static final String propFile = "selenium.properties";
+    public static String resourceBundlePath = "logger/logger";
+    protected static ResourceBundle resourceBundle;
     public static PropReader propReader;
     protected static BrowserManager browser;
     protected static Logger logger = Logger.getInstance();
 
     @BeforeClass
     public static void before() {
+        resourceBundle = ResourceBundle.getBundle(resourceBundlePath, Locale.forLanguageTag("en"));
         propReader = new PropReader(propFile);
         browser = BrowserManager.getInstance();
         browser.getDriver().manage().window().maximize();
@@ -35,5 +40,9 @@ public abstract class BaseEntity {
 
     protected void info(final String message) {
         logger.info(formatLogMsg(message));
+    }
+
+    protected static String getLocale(final String key) {
+        return resourceBundle.getString(key);
     }
 }

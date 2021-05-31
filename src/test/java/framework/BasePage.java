@@ -12,6 +12,7 @@ public abstract class BasePage extends BaseEntity {
         title = pageTitle;
         Label pageTarget = new Label(locator, pageTitle);
         Assert.assertTrue(pageTarget.isPresent());
+        info(String.format(getLocale("logger.page.opens"), title));
 
     }
 

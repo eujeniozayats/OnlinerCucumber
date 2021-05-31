@@ -9,7 +9,7 @@ public class Label extends BaseElement {
     }
 
     protected String getElementType() {
-        return "";
+        return getLocale("logger.label");
     }
 
 }

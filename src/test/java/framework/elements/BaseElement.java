@@ -16,8 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class BaseElement extends BaseEntity {
 
-    private static final int TIMEOUT_WAIT_0 = 0;
-    private static final int IMPLICITLY = 30;
     protected String elementName;
     protected By locator;
     protected WebElement element;
@@ -28,10 +26,10 @@ public abstract class BaseElement extends BaseEntity {
     }
 
     public void waitTillElementNotStale() {
-        (new WebDriverWait(browser.getDriver(), IMPLICITLY)).until(ExpectedConditions.presenceOfElementLocated(locator));
-        WebElement element = (new WebDriverWait(browser.getDriver(), IMPLICITLY)).until(ExpectedConditions.presenceOfElementLocated(locator));
-        (new WebDriverWait(browser.getDriver(), IMPLICITLY)).until(ExpectedConditions.stalenessOf(element));
-        (new WebDriverWait(browser.getDriver(), IMPLICITLY)).until(ExpectedConditions.presenceOfElementLocated(locator));
+        (new WebDriverWait(browser.getDriver(), Long.parseLong(propReader.getProperty("implicitlyWait")))).until(ExpectedConditions.presenceOfElementLocated(locator));
+        WebElement element = (new WebDriverWait(browser.getDriver(), Long.parseLong(propReader.getProperty("implicitlyWait")))).until(ExpectedConditions.presenceOfElementLocated(locator));
+        (new WebDriverWait(browser.getDriver(), Long.parseLong(propReader.getProperty("implicitlyWait")))).until(ExpectedConditions.stalenessOf(element));
+        (new WebDriverWait(browser.getDriver(),Long.parseLong(propReader.getProperty("implicitlyWait")))).until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
     protected abstract String getElementType();
@@ -56,22 +54,22 @@ public abstract class BaseElement extends BaseEntity {
 
     public void check() {
         waitForIsElementPresent();
-        (new WebDriverWait(browser.getDriver(), IMPLICITLY)).until(ExpectedConditions.elementToBeClickable(element));
+        (new WebDriverWait(browser.getDriver(), Long.parseLong(propReader.getProperty("implicitlyWait")))).until(ExpectedConditions.elementToBeClickable(element));
         final JavascriptExecutor js = (JavascriptExecutor) browser.getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
+        info(getLocale("logger.checkboxing"));
         element.click();
-        (new WebDriverWait(BrowserManager.getInstance().getDriver(), IMPLICITLY)).until((ExpectedCondition<Boolean>) wd ->
+        (new WebDriverWait(BrowserManager.getInstance().getDriver(), Long.parseLong(propReader.getProperty("implicitlyWait")))).until((ExpectedCondition<Boolean>) wd ->
                 ((JavascriptExecutor) browser.getDriver()).executeScript("return document.readyState").equals("complete"));
     }
 
 
     public void clickAndWait() {
         waitForIsElementPresent();
-        (new WebDriverWait(browser.getDriver(), IMPLICITLY)).until(ExpectedConditions.elementToBeClickable(element));
-        final JavascriptExecutor js = (JavascriptExecutor) browser.getDriver();
-        //info(getLocale("loc.clicking"));
+        (new WebDriverWait(browser.getDriver(), Long.parseLong(propReader.getProperty("implicitlyWait")))).until(ExpectedConditions.elementToBeClickable(element));
+        info(getLocale("logger.clicking"));
         element.click();
-        (new WebDriverWait(browser.getDriver(), IMPLICITLY)).until((ExpectedCondition<Boolean>) wd ->
+        (new WebDriverWait(browser.getDriver(), Long.parseLong(propReader.getProperty("implicitlyWait")))).until((ExpectedCondition<Boolean>) wd ->
                 ((JavascriptExecutor) browser.getDriver()).executeScript("return document.readyState").equals("complete"));
         WebDriverWait wait = new WebDriverWait(BrowserManager.getInstance().getDriver(), Long.parseLong(propReader.getProperty("defaultPageLoadTimeout")));
 
@@ -96,7 +94,7 @@ public abstract class BaseElement extends BaseEntity {
 
     public boolean isPresent() {
 
-        return isPresent(TIMEOUT_WAIT_0);
+        return isPresent(Integer.parseInt(propReader.getProperty("zeroTimeout")));
     }
 
 

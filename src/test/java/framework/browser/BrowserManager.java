@@ -55,6 +55,6 @@ public final class BrowserManager extends BaseEntity {
 
     @Override
     protected String formatLogMsg(String message) {
-        return null;
+        return message;
     }
 }

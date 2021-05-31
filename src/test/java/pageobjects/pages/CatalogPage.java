@@ -16,21 +16,15 @@ public class CatalogPage extends BasePage {
     }
 
     public void navigateMenu(String category, String subCategory) {
-        Button btnCategory = new Button(By.xpath(String.format(categoryLocator, category)), "Category Button");
+        Button btnCategory = new Button(By.xpath(String.format(categoryLocator, category)), category);
         btnCategory.clickAndWait();
-        Button btnSubCategory = new Button(By.xpath(String.format(subCategoryLocator, subCategory)), "Sub category Button");
-        btnSubCategory.clickAndWait();
-
-    }
-
-    public void selectSubCategory(String subCategory) {
-        Button btnSubCategory = new Button(By.xpath(String.format(subCategoryLocator, subCategory)), "Sub category Button");
+        Button btnSubCategory = new Button(By.xpath(String.format(subCategoryLocator, subCategory)), subCategory);
         btnSubCategory.clickAndWait();
 
     }
 
     public void selectDropdownItem(String dropItem) {
-        Button btnCategory = new Button(By.xpath(String.format(itemLocator, dropItem)), "Item Button");
+        Button btnCategory = new Button(By.xpath(String.format(itemLocator, dropItem)), dropItem);
         btnCategory.clickAndWait();
 
     }
